@@ -3,10 +3,12 @@ import './App.css';
 import axios from 'axios';
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Form from 'react-bootstrap/Form';
-import Button from "react-bootstrap/Button";
-import Image from 'react-bootstrap/Image'
-import ErrorHandle from './ErrorHandle';
+import FormSearch from './Components/Form';
+import AlertMess from './Components/Alert';
+import Map from './Components/Map';
+import CityData from './Components/CityData'
+import Weather from './Components/Weather'
+
 export class App extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,9 @@ export class App extends Component {
       cityNme:'',
       cityDat:{},
       displayD: false,
+      alert:false,
+      error:'',
+      weatherData:[],
      
     }
   }
@@ -28,14 +33,27 @@ export class App extends Component {
 
   getCity=async(e)=>{
     e.preventDefault();
-    
+  try{
     const axiosRes = await axios.get(`https://us1.locationiq.com/v1/search.php?key=pk.43f046aa6530fabe68fd7b1718facc51&city=${this.state.cityNme}&format=json`);
   
+    // const weatherD = await axios.get(`https://city-explorer-server-salam.herokuapp.com/data`)
     console.log(axiosRes);
     this.setState({
       cityDat:axiosRes.data[0],
-      displayD:true
+      // weatherData: weatherD.data.data,
+      displayD:true,
+      alert:false,
+      
     });
+    // console.log(weatherData.data.data.[0].weather.description); 
+  }  catch(error){
+      this.setState({
+        error:error.message,
+        alert:true,
+       
+      })
+  }
+   
   
   }
 
@@ -43,39 +61,37 @@ export class App extends Component {
     return (
 
     
+      <div>{this.state.alert &&
+        <AlertMess 
+        error={this.state.error}
+        />
+      }
       <div>
-         
-          <ErrorHandle >
-          <h1>city Explorer</h1>
-          <br></br>
-          <Form onSubmit={this.getCity}>
-            <Form.Group>
-            <Form.Label> City Name </Form.Label>
-            <Form.Control onChange={this.updateCityName} type='test'></Form.Control>
-            <br></br>
-            <Button className="button" variant="danger" type="submit">
-            Explore!
-          </Button>
-            </Form.Group>
-            
-          </Form><br></br>
-          {this.state.displayD && 
+      <FormSearch
+          getCity={this.getCity}
+          updateCityName={this.updateCityName}
+          />
+
+          {(this.state.displayD) && 
             <div>
-              <p>
-                {this.state.cityDat.display_name}
-              </p>
-              <p>{this.state.cityDat.lat}</p>
-            <p>{this.state.cityDat.lon}</p><br></br>
-
-              <Image src={`https://maps.locationiq.com/v3/staticmap?key=pk.d36871f015649f915282f374cff76628&q&center=${this.state.cityDat.lat},${this.state.cityDat.lon}&zoom=15`} alt='' thumbnail fluid  ></Image>
-            </div> 
-
-            
+              <Map
+              cityDat={this.state.cityDat}
+              />
+              <CityData
+              cityDat={this.state.cityDat}
+              />
+            </div>
           }
-
-          </ErrorHandle>
-
+          {/* {(this.state.weatherData) &&
+            <Weather
+            weather={this.state.weatherData}
+            />
           
+          } */}
+            
+
+      </div>
+                   
         </div>
          
     );
