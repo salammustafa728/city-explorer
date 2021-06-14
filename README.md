@@ -3,7 +3,8 @@
 # city-Explorer
 
 **Author**: Salam Mustafa
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+
+**Version**: 
 
 ## Overview
 
@@ -45,3 +46,14 @@ Start time: 4 pm
 Finish time: 8 pm
 
 Actual time needed to complete: 4 h
+
+
+Name of feature: Display the Weather description
+
+Estimate of time needed to complete: 3h
+
+Start time: 4 pm
+
+Finish time: .
+
+Actual time needed to complete: 6 h
