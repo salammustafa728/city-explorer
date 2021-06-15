@@ -6,11 +6,16 @@ export class Weather extends Component {
         return (
             <>
             {
-                 this.props.weatherData.map(value => {
+                 this.props.weather.map(value => {
                 return (
-                  <ListGroup  style={{ width: "30%" , margin: 'Auto' , textAlign: 'center'}}>
-                    {value.Weather.description}
+                 <>
+                  <ListGroup  style={{ width: "30%" , margin: '50px 60px' , textAlign: 'center'}}>
+                    {value.description}
                   </ListGroup>
+                   <ListGroup  style={{ width: "30%" , margin: '20px 60px' , textAlign: 'center'}}>
+                   {value.date}
+                 </ListGroup>
+                 </>
                 )
               })
               }
