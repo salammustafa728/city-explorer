@@ -18,7 +18,7 @@ export class App extends Component {
       displayD: false,
       alert:false,
       error:'',
-      weatherData:[],
+      weatherData:'',
      
     }
   }
@@ -36,16 +36,16 @@ export class App extends Component {
   try{
     const axiosRes = await axios.get(`https://us1.locationiq.com/v1/search.php?key=pk.43f046aa6530fabe68fd7b1718facc51&city=${this.state.cityNme}&format=json`);
   
-    // const weatherD = await axios.get(`https://city-explorer-server-salam.herokuapp.com/data`)
+    const myApiRes = await axios.get(`${process.env.REACT_APP_URL}/weather-data`)
     console.log(axiosRes);
     this.setState({
       cityDat:axiosRes.data[0],
-      // weatherData: weatherD.data.data,
+      weatherData: myApiRes.data.data,
       displayD:true,
       alert:false,
       
     });
-    // console.log(weatherData.data.data.[0].weather.description); 
+    // console.log(weatherD.data.data.[0].weather.description); 
   }  catch(error){
       this.setState({
         error:error.message,
@@ -80,14 +80,11 @@ export class App extends Component {
               <CityData
               cityDat={this.state.cityDat}
               />
-            </div>
-          }
-          {/* {(this.state.weatherData) &&
-            <Weather
+               <Weather
             weather={this.state.weatherData}
             />
-          
-          } */}
+            </div>
+          }
             
 
       </div>
