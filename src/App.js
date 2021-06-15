@@ -16,9 +16,11 @@ export class App extends Component {
       cityNme:'',
       cityDat:{},
       displayD: false,
+      lat:'',
+      lon:'',
       alert:false,
       error:'',
-      weatherData:'',
+      weatherData:''
      
     }
   }
@@ -34,18 +36,23 @@ export class App extends Component {
   getCity=async(e)=>{
     e.preventDefault();
   try{
-    const axiosRes = await axios.get(`https://us1.locationiq.com/v1/search.php?key=pk.43f046aa6530fabe68fd7b1718facc51&city=${this.state.cityNme}&format=json`);
-  
-    const myApiRes = await axios.get(`${process.env.REACT_APP_URL}/weather-data`)
-    console.log(axiosRes);
-    this.setState({
-      cityDat:axiosRes.data[0],
-      weatherData: myApiRes.data.data,
-      displayD:true,
-      alert:false,
-      
-    });
-    // console.log(weatherD.data.data.[0].weather.description); 
+    await axios.get(`https://us1.locationiq.com/v1/search.php?key=pk.43f046aa6530fabe68fd7b1718facc51&
+    city=${this.state.cityNme}&format=json`).then(locatioIqRes=>{
+
+      this.setState({
+        cityDat:locatioIqRes.data[0],
+        lat:locatioIqRes.data[0].lat,
+        lon:locatioIqRes.data[0].lon,
+      })
+      axios.get(`${process.env.REACT_APP_URL}/weather?lat=${this.state.lat}&lon=${this.state.lon}`).then(weatherReponse=>{
+        this.setState({
+          weatherData: weatherReponse.data,
+          displayD:true,
+          alert:false
+          
+        });
+      })
+    }); 
   }  catch(error){
       this.setState({
         error:error.message,
@@ -61,7 +68,8 @@ export class App extends Component {
     return (
 
     
-      <div>{this.state.alert &&
+      <div style={{margin : 'auto',background:'#E99497'}}>
+        {this.state.alert &&
         <AlertMess 
         error={this.state.error}
         />
