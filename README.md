@@ -57,3 +57,15 @@ Start time: 4 pm
 Finish time: .
 
 Actual time needed to complete: 6 h
+
+
+Name of feature: Display the weathe and the date discrption for the city
+
+
+Estimate of time needed to complete: 3 h
+
+Start time: 2 pm
+
+Finish time: 5 pm
+
+Actual time needed to complete: 3 h
