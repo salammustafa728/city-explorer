@@ -54,9 +54,9 @@ Estimate of time needed to complete: 3h
 
 Start time: 4 pm
 
-Finish time: .
+Finish time: 8 pm
 
-Actual time needed to complete: 6 h
+Actual time needed to complete: 4 h
 
 
 Name of feature: Display the weathe and the date discrption for the city
@@ -69,3 +69,14 @@ Start time: 2 pm
 Finish time: 5 pm
 
 Actual time needed to complete: 3 h
+
+
+Name of feature: Display the top Moives for the choosen city 
+
+Estimate of time needed to complete: 6h 
+
+Start time: 2 pm
+
+Finish time: 8 pm
+
+Actual time needed to complete: . 
