@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import React, { Component } from 'react'
@@ -8,6 +7,7 @@ import AlertMess from './Components/Alert';
 import Map from './Components/Map';
 import CityData from './Components/CityData'
 import Weather from './Components/Weather'
+import Movie from './Components/Movie';
 
 export class App extends Component {
   constructor(props) {
@@ -20,7 +20,8 @@ export class App extends Component {
       lon:'',
       alert:false,
       error:'',
-      weatherData:''
+      weatherData:'',
+      movieData:''
      
     }
   }
@@ -29,6 +30,7 @@ export class App extends Component {
     // console.log(e.target.value);
     this.setState({
       cityNme:e.target.value,
+
     });
   }
   
@@ -51,6 +53,7 @@ export class App extends Component {
           alert:false
           
         });
+
       })
     }); 
   }  catch(error){
@@ -61,8 +64,29 @@ export class App extends Component {
       })
   }
    
+  this.gitMovie(this.state.cityNme);
+   }
+
+   gitMovie=async(cityNme)=>{
+    try{
+      let url = `${process.env.REACT_APP_URL}/movies?qurey=${cityNme}`;
+    const movieUrl =await axios.get(url);
+    console.log('movie URL',movieUrl);
+    this.setState({
+      weatherData:movieUrl.data,
+      displayD:true
+    })
+    }catch(error){
+      this.setState({
+        error:error.message,
+        alert:true,
+       
+      })
+    }
+
+   }
+
   
-  }
 
   render(){
     return (
@@ -78,6 +102,7 @@ export class App extends Component {
       <FormSearch
           getCity={this.getCity}
           updateCityName={this.updateCityName}
+          gitMovie={this.gitMovie}
           />
 
           {(this.state.displayD) && 
@@ -91,6 +116,14 @@ export class App extends Component {
                <Weather
             weather={this.state.weatherData}
             />
+            
+            {/*
+            movie Data
+            */}
+           <Movie
+
+              movieData={this.state.movieData}
+           />
             </div>
           }
             
