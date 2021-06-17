@@ -8,6 +8,7 @@ import Map from './Components/Map';
 import CityData from './Components/CityData'
 import Weather from './Components/Weather'
 import Movie from './Components/Movie';
+import Footer from './Components/Footer'
 
 export class App extends Component {
   constructor(props) {
@@ -60,8 +61,6 @@ export class App extends Component {
              displayD:true
           })
         })
-        
-        // this.gitMovie(this.state.cityNme);
 
       })
      
@@ -77,25 +76,7 @@ export class App extends Component {
   
    }
 
-  //  gitMovie=async(cityNme)=>{
-  //   try{
-  //     let url = `${process.env.REACT_APP_URL}/movies?qurey=${cityNme}`;
-  //     console.log('url', url);
-  //   const movieUrl =await axios.get(url);
-  //   console.log('movie URL',movieUrl);
-  //   this.setState({
-  //     movieData:movieUrl.data,
-  //     displayD:true
-  //   })
-  //   }catch(error){
-  //     this.setState({
-  //       error:error.message,
-  //       alert:true,
-       
-  //     })
-  //   }
-
-  //  }
+  
 
   
 
@@ -103,7 +84,7 @@ export class App extends Component {
     return (
 
     
-      <div style={{margin : 'auto',background:'#E99497'}}>
+      <div style={{margin : 'auto',background:'#CDF0EA'}}>
         {this.state.alert &&
         <AlertMess 
         error={this.state.error}
@@ -115,9 +96,9 @@ export class App extends Component {
           updateCityName={this.updateCityName}
           gitMovie={this.gitMovie}
           />
-
+           
           {(this.state.displayD) && 
-            <div>
+            <div style={{}}>
                {/*  The Map  */}
               <Map
               cityDat={this.state.cityDat}
@@ -127,9 +108,12 @@ export class App extends Component {
               cityDat={this.state.cityDat}
               />
               {/*  Weather Data  */}
-               <Weather
+              <div>
+              <Weather 
             weather={this.state.weatherData}
             />
+              </div>
+               
             {/* movie Data */}
            <Movie
 
@@ -138,7 +122,7 @@ export class App extends Component {
             </div>
           }
             
-
+          <Footer/>
       </div>
                    
         </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ListGroup from 'react-bootstrap/ListGroup';
+import WeatherDay from './WeatherDay';
 
 export class Weather extends Component {
     render() {
@@ -10,13 +11,18 @@ export class Weather extends Component {
                  this.props.weather.map(value => {
                 return (
                  <>
+                <WeatherDay
                 
-                  <ListGroup  style={{ width: "30%" , margin: '50px 60px' , textAlign: 'center'}}>
-                    {value.description}
+                description={value.description}
+                date= {value.date}
+                
+                />
+                  {/* <ListGroup  style={{ width: "30%" , margin: '50px 60px' , textAlign: 'center'}}>
+                    
                   </ListGroup>
                    <ListGroup  style={{ width: "30%" , margin: '20px 60px' , textAlign: 'center'}}>
-                   {value.date}
-                 </ListGroup>
+                  
+                 </ListGroup> */}
                  </>
                 )
               })
