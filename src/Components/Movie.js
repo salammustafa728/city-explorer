@@ -3,7 +3,10 @@ import Card from 'react-bootstrap/Card'
 
 
 export class Movie extends Component {
+  
     render() {
+      console.log(this.props.movieData);
+      console.log('movie data',this.props);
         return (
 
             <>
@@ -12,15 +15,15 @@ export class Movie extends Component {
           
           this.props.movieData.map(value => {
                  return(
+                   
                     <Card>
-                    <Card.Img variant="top" src={value.img}/>
                   <Card.Body>
-                    <Card.Title>{value.title}</Card.Title>
-                  <Card.Text>{value.overview}   </Card.Text>
-                 <Card.Text>{value.averageVotes} </Card.Text>
-                 <Card.Text>{value.released}</Card.Text>
-                 <Card.Text>{value.popularity}</Card.Text>
-              
+                    <Card.Title>title: {value.title}</Card.Title>
+                  <Card.Text>Overview :   {value.overview}   </Card.Text>
+                 <Card.Text> Average Votes {value.averageVotes} </Card.Text>
+                 <Card.Text> Released_on : {value.released}</Card.Text>
+                 <Card.Text> Popularity : {value.popularity}</Card.Text>
+                 <Card.Img style={{width : '50px' , height:'50px'}} variant="top" src={value.img}/>
                  </Card.Body>
                  </Card>
 

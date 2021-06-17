@@ -49,12 +49,22 @@ export class App extends Component {
       axios.get(`${process.env.REACT_APP_URL}/weather?lat=${this.state.lat}&lon=${this.state.lon}`).then(weatherReponse=>{
         this.setState({
           weatherData: weatherReponse.data,
-          displayD:true,
+          // displayD:true,
           alert:false
-          
         });
+        axios.get(`${process.env.REACT_APP_URL}/movies?qurey=${this.state.cityNme}`).then(movieRes=>{
+         console.log('movieRes', movieRes);
+          this.setState({
+
+            movieData:movieRes.data,
+             displayD:true
+          })
+        })
+        
+        // this.gitMovie(this.state.cityNme);
 
       })
+     
     }); 
   }  catch(error){
       this.setState({
@@ -64,27 +74,28 @@ export class App extends Component {
       })
   }
    
-  this.gitMovie(this.state.cityNme);
+  
    }
 
-   gitMovie=async(cityNme)=>{
-    try{
-      let url = `${process.env.REACT_APP_URL}/movies?qurey=${cityNme}`;
-    const movieUrl =await axios.get(url);
-    console.log('movie URL',movieUrl);
-    this.setState({
-      weatherData:movieUrl.data,
-      displayD:true
-    })
-    }catch(error){
-      this.setState({
-        error:error.message,
-        alert:true,
+  //  gitMovie=async(cityNme)=>{
+  //   try{
+  //     let url = `${process.env.REACT_APP_URL}/movies?qurey=${cityNme}`;
+  //     console.log('url', url);
+  //   const movieUrl =await axios.get(url);
+  //   console.log('movie URL',movieUrl);
+  //   this.setState({
+  //     movieData:movieUrl.data,
+  //     displayD:true
+  //   })
+  //   }catch(error){
+  //     this.setState({
+  //       error:error.message,
+  //       alert:true,
        
-      })
-    }
+  //     })
+  //   }
 
-   }
+  //  }
 
   
 
@@ -107,19 +118,19 @@ export class App extends Component {
 
           {(this.state.displayD) && 
             <div>
+               {/*  The Map  */}
               <Map
               cityDat={this.state.cityDat}
               />
+               {/*  City Data  */}
               <CityData
               cityDat={this.state.cityDat}
               />
+              {/*  Weather Data  */}
                <Weather
             weather={this.state.weatherData}
             />
-            
-            {/*
-            movie Data
-            */}
+            {/* movie Data */}
            <Movie
 
               movieData={this.state.movieData}
