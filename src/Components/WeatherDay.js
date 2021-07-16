@@ -6,15 +6,16 @@ export class WeatherDay extends Component {
     render() {
         return (
             <Card
-                bg="info"
-                text="dark"
+            className='weather'
+                bg="dark"
+                text="light"
                 style={{ width: '18rem' , margin: "21px" }}
-                className="mb-2"
+                // className="mb-2"
             >
-                <Card.Header>Weather Day</Card.Header>
-                <Card.Body>
-                    <Card.Title>{this.props.description}</Card.Title>
-                    <Card.Text>
+                <Card.Header style={{marginLeft:'10px'}}>Weather Day</Card.Header>
+                <Card.Body >
+                    <Card.Title style={{marginLeft:'30px'}}>{this.props.description}</Card.Title>
+                    <Card.Text style={{marginLeft:'30px'}}>
                         {this.props.date}
                     </Card.Text>
                 </Card.Body>

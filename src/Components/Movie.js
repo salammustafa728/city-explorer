@@ -3,51 +3,44 @@ import Card from 'react-bootstrap/Card'
 
 
 export class Movie extends Component {
-  
-    render() {
-      console.log(this.props.movieData);
-      console.log('movie data',this.props);
-        return (
 
-            <>
-          
-          {   
-          
+  render() {
+    // console.log(this.props.movieData);
+    // console.log('movie data',this.props);
+    return (
+      <>
+        {
           this.props.movieData.map(value => {
-                 return(
-                   
-                    <Card style={{background: "#F6C6EA", width:'200px'}}>
-                  <Card.Body>
-                    <Card.Title>title: {value.title}</Card.Title>
+            return (
+
+              <Card style={{ background: "#DA0037", width: '200px',height:'1050px',margin:'20px' }}>
+                <Card.Body>
+                  <Card.Title>title: {value.title}</Card.Title>
+                  <Card.Img style={{ width: '100%' }} variant="top" src={`https://image.tmdb.org/t/p/w500${value.img}`} />
                   <Card.Text>Overview :   {value.overview}   </Card.Text>
-                 <Card.Text> Average Votes {value.averageVotes} </Card.Text>
-                 <Card.Text> Released_on : {value.released}</Card.Text>
-                 <Card.Text> Popularity : {value.popularity}</Card.Text>
-                 <Card.Img style={{width : '50px' , height:'100px'}} variant="top" src={value.img}/>
-                 </Card.Body>
-                 </Card>
+                  <Card.Text> Average Votes {value.averageVotes} </Card.Text>
+                  <Card.Text> Released_on : {value.released}</Card.Text>
+                  <Card.Text> Popularity : {value.popularity}</Card.Text>
+                </Card.Body>
+              </Card>
+            )
+          })
+        }
+      </>
 
-                 )
-             })
-
-
-          }
-           
-        </>
-         
-        )
-    }
+    )
+  }
 }
 
 export default Movie
 // {/*
 //   this.props.movie.data.map(value => {
-                     
+
 //                 return (
 //                  <>
 //                  {console.log('move data',this.movie.data)}
 //                  {console.log('the data inside the array', this.props.movie.data)}
-                  
+
 //                   <Card>
 //                     <Card.Img variant="top" src="holder.js/100px160" />
 //                   <Card.Body>
@@ -57,7 +50,7 @@ export default Movie
 //                  <Card.Text>{value.released}</Card.Text>
 //                  <Card.Text>{value.popularity}</Card.Text>
 //                  <Card.Image>{value.img}</Card.Image>
-               
+
 //                  </Card.Body>
 //                  </Card>
 // {/*
@@ -69,7 +62,7 @@ export default Movie
 //     this.popularity=movie.popularity;
 //     this.released=movie.released_on;
 // */}
-                
+
 // </>
 // )
 // })
@@ -86,9 +79,9 @@ export default Movie
 //             //     this.props.movie.filter(value => {
 
 //             //     })
-               
+
 //             //      { Array.from({ length: 4 }).map((_, idx) => (
-                  
+
 //             //       <Card>
 //             //       <Card.Img variant="top" src="holder.js/100px160" />
 //             //     <Card.Body>
@@ -99,9 +92,9 @@ export default Movie
 //             //    </Card.Text>
 //             //    </Card.Body>
 //             //    </Card>
-                
+
 //             //       ))
-                  
+
 //             //       }
-                
+
 //             // </div>
