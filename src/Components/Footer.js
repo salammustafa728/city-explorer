@@ -15,7 +15,7 @@ class Footer extends React.Component {
            <div>
                   <Navbar>
                     <Container>
-                        <Navbar.Brand href="#home">Auther Salam Mustafa </Navbar.Brand>
+                        <Navbar.Brand href="#home">Author Salam Mustafa </Navbar.Brand>
                         <Navbar.Toggle />
                         <Navbar.Collapse className="justify-content-end">
                             <Navbar.Text>

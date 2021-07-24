@@ -7,7 +7,7 @@ export class Header extends Component {
     render() {
         return (
             <div>
-                <Card>
+                <Card style={{position:'relative'}}>
                     <Card.Img variant="top" className="parallax-wrapper hero.parallax-content" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/sterling-davis-4iXagiKXn3Y-unsplash-min.jpg" />
                     <Card.Body>
                         <Card.Text className="cityName">

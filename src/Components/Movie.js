@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Card from 'react-bootstrap/Card'
-
+import ListGroup from 'react-bootstrap/ListGroup'
+import './Movie.css'
 
 export class Movie extends Component {
 
@@ -8,31 +9,47 @@ export class Movie extends Component {
     // console.log(this.props.movieData);
     // console.log('movie data',this.props);
     return (
-      <>
-        {
-          this.props.movieData.map(value => {
-            return (
+      <div>
+        <ListGroup as="ul"  style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:'10px'}}>
+          {
+            this.props.movieData.map(value => {
+              return (
+                <div className='leaderboard' style={{  }}>
+                  <ListGroup.Item className='item value' as="li" style={{background:'#444444'}}>
+                    {value.title}
+                  </ListGroup.Item>
+                  <ListGroup.Item className='item' as="li"><img style={{ width: '20%' }} src={`https://image.tmdb.org/t/p/w500${value.img}`} alt='Poster' /></ListGroup.Item>
+                  <ListGroup.Item className='item' as="li" disabled>
+                    {value.overview}
+                  </ListGroup.Item>
+                  <ListGroup.Item className='item' as="li"> {value.averageVotes} </ListGroup.Item>
+                  <ListGroup.Item className='item' as="li"> {value.released}</ListGroup.Item>
+                  <ListGroup.Item className='item' as="li"> {value.popularity} </ListGroup.Item>
 
-              <Card style={{ background: "#DA0037", width: '200px',height:'1050px',margin:'20px' }}>
-                <Card.Body>
-                  <Card.Title>title: {value.title}</Card.Title>
-                  <Card.Img style={{ width: '100%' }} variant="top" src={`https://image.tmdb.org/t/p/w500${value.img}`} />
-                  <Card.Text>Overview :   {value.overview}   </Card.Text>
-                  <Card.Text> Average Votes {value.averageVotes} </Card.Text>
-                  <Card.Text> Released_on : {value.released}</Card.Text>
-                  <Card.Text> Popularity : {value.popularity}</Card.Text>
-                </Card.Body>
-              </Card>
-            )
-          })
-        }
-      </>
+                </div>
+              )
+            })
+          }
+        </ListGroup>
+      </div>
 
     )
   }
 }
 
 export default Movie
+
+
+// <Card style={{ background: "#DA0037", width: '200px',height:'1050px',margin:'20px' }}>
+              //   <Card.Body>
+              //     <Card.Title>title: {value.title}</Card.Title>
+              //     <Card.Img style={{ width: '100%' }} variant="top" src={`https://image.tmdb.org/t/p/w500${value.img}`} />
+              //     <Card.Text>Overview :   {value.overview}   </Card.Text>
+              //     <Card.Text> Average Votes {value.averageVotes} </Card.Text>
+              //     <Card.Text> Released_on : {value.released}</Card.Text>
+              //     <Card.Text> Popularity : {value.popularity}</Card.Text>
+              //   </Card.Body>
+              // </Card>
 // {/*
 //   this.props.movie.data.map(value => {
 

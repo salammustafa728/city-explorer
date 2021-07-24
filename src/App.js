@@ -114,7 +114,7 @@ export class App extends Component {
               </div>
 
               {/* movie Data */}
-              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+              <div >
                 <Movie
                   movieData={this.state.movieData}
                 />
