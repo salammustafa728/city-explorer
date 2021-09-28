@@ -11,3 +11,18 @@
     font-size: 1.5rem;
     color: black;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .form {
+        border: 1px solid;
+        padding: 1em;
+        margin: 15px auto;
+        width: 400px;
+        border-block-color: #DA0037;
+        background: #FF616D;
+        font-family: 'Source Code Pro', monospace;
+        font-size: 1rem;
+        color: black;
+    }
+  }

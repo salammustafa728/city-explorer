@@ -7,7 +7,6 @@ export class Map extends Component {
             <div>
              <Image style={{ width: "60%" , margin: '20px 30px'}} src={`https://maps.locationiq.com/v3/staticmap?key=pk.d36871f015649f915282f374cff76628&q&
              center=${this.props.cityDat.lat},${this.props.cityDat.lon}&zoom=15`} alt='' thumbnail fluid  ></Image>
-            
             </div>
         )
     }

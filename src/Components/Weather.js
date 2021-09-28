@@ -12,17 +12,9 @@ export class Weather extends Component {
                 return (
                  <>
                 <WeatherDay
-                
                 description={value.description}
                 date= {value.date}
-                
                 />
-                  {/* <ListGroup  style={{ width: "30%" , margin: '50px 60px' , textAlign: 'center'}}>
-                    
-                  </ListGroup>
-                   <ListGroup  style={{ width: "30%" , margin: '20px 60px' , textAlign: 'center'}}>
-                  
-                 </ListGroup> */}
                  </>
                 )
               })

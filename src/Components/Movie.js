@@ -4,13 +4,10 @@ import ListGroup from 'react-bootstrap/ListGroup'
 import './Movie.css'
 
 export class Movie extends Component {
-
   render() {
-    // console.log(this.props.movieData);
-    // console.log('movie data',this.props);
     return (
       <div>
-        <ListGroup as="ul"  style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:'10px'}}>
+        <ListGroup as="ul" className="movies" style={{}}>
           {
             this.props.movieData.map(value => {
               return (

@@ -10,7 +10,6 @@ export class WeatherDay extends Component {
                 bg="dark"
                 text="light"
                 style={{ width: '18rem' , margin: "21px" }}
-                // className="mb-2"
             >
                 <Card.Header style={{marginLeft:'10px'}}>Weather Day</Card.Header>
                 <Card.Body >

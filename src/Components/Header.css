@@ -23,3 +23,14 @@ body {
   flex: 1 1 auto;
   padding: 0px;
 }
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .cityName{
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    top: 50px;
+    font-size: 50px;
+    border: 0px;
+}
+}

@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
 import Toast from 'react-bootstrap/Toast';
-// import ToastContainer from 'react-bootstrap/ToastContainer'
 
 export class CityData extends Component {
     
     render() {
         return (
             <div style={{ margin: '70px 60px' }}>
-                {/* <p>
-                    {this.props.cityDat.display_name}
-                </p>
-                <p>{this.props.cityDat.lat}</p>
-                <p>{this.props.cityDat.lon}</p><br></br> */}
           <Toast>
             <Toast.Header closeButton={false}>
               <img
